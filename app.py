@@ -40,6 +40,18 @@ def insertar_libro():
         print("Error al insertar un nuevo libro")
         print(e)
 
+def eliminar_libro():
+    try:
+        libro_dao = LibroDAO()
+        print("Lista de libros disponibles: ")
+        ver_libros()
+        id = int(input("Escribe el id del libro a eliminar: "))
+        libro_dao.eliminar(id)
+        print(f"El libro {id} ha sido eliminado con éxito")
+    except Esception as e:
+        print(f"Error al eliminar el libro {id}")
+        print(e)
+
 def actualizar_libro():
     print("Selecciona el libro a actualizar")
     try:
