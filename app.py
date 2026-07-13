@@ -1,3 +1,5 @@
+import flet as ft
+from ui.main_window import main_window
 
 from dao.libro_dao import LibroDAO
 from models.libro import Libro
@@ -183,22 +185,24 @@ def actualizar_usuario():
         print("Error al actualizar un usuario")
         print(e)
 
-def main():
-    print("=== BIBLIOTECA UNIVERSITARIA ===")
-    print("Menú de opciones")
-    print  ("1. Libros")
-    print("2. Usuarios")
-    
-    opc = int(input("Selecciona una opcion: "))
+ft.app(target = main_window)
 
-    match opc:
-        case 1:
-            menu_libros()
-        case 2:
-            menu_usuarios()    
+# def main():
+#     print("=== BIBLIOTECA UNIVERSITARIA ===")
+#     print("Menú de opciones")
+#     print  ("1. Libros")
+#     print("2. Usuarios")
+    
+#     opc = int(input("Selecciona una opcion: "))
+
+#     match opc:
+#         case 1:
+#             menu_libros()
+#         case 2:
+#             menu_usuarios()    
  
 
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
             

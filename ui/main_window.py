@@ -11,7 +11,8 @@ def main_window(page: ft.Page):
     titulo = ft.Text(
         "Sistema de Biblioteca Universitaria",
         size=24,
-        weight=ft.Fontweight.BOLD
+        weight=ft.FontWeight.BOLD,
+        color = ft.Colors.BLUE_GREY_900
     )
 
     subtitulo = ft.Text(
@@ -21,7 +22,7 @@ def main_window(page: ft.Page):
     )
 
     # Widget Conteiner
-    contenido = ft.Conteiner(
+    contenido = ft.Container(
         content = ft.Column(
             controls = [
                 titulo,
@@ -30,7 +31,7 @@ def main_window(page: ft.Page):
             spacing = 10,
         ),
         padding = 30,
-        expanded = True
+        expand = True
     )
 
     menu_lateral = ft.Container(
@@ -42,7 +43,7 @@ def main_window(page: ft.Page):
                 ft.Text(
                     "Biblioteca",
                     size = 22,
-                    weight = ft.Fontweight.BOLD,
+                    weight = ft.FontWeight.BOLD,
                     color = ft.Colors.WHITE
                 ),
                 ft.Text(
@@ -52,24 +53,24 @@ def main_window(page: ft.Page):
                 ),
                 ft.Divider(color = ft.Colors.BLUE_GREY_700),
                 ft.ElevatedButton(
-                    text = "Libros",
-                    text = ft.Icons.BOOK,
-                    width = 100,
+                    "Libros",
+                    icon = ft.Icons.BOOK,
+                    width = 180,
                 ),
                 ft.ElevatedButton(
-                    text = "Usuarios",
-                    text = ft.Icons.PERSON,
-                    width = 100,
+                    "Usuarios",
+                    icon = ft.Icons.PERSON,
+                    width = 180,
                 ),
                 ft.ElevatedButton(
-                    text = "Prestamos",
-                    text = ft.Icons.SWAP_HORIZ,
-                    width = 100,
+                    "Prestamos",
+                    icon = ft.Icons.SWAP_HORIZ,
+                    width = 180,
                 ),
                 ft.ElevatedButton(
-                    text = "Devoluciones",
-                    text = ft.Icons.KEYBOARD_RETURN,
-                    width = 100,
+                    "Devoluciones",
+                    icon = ft.Icons.KEYBOARD_RETURN,
+                    width = 180,
                 ),
             ],
             spacing = 15
