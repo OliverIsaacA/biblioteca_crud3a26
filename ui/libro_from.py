@@ -1,5 +1,8 @@
 import flet as ft
 
+from models.libro import Libro
+from dao.libro_dao import LibroDAO
+
 def libro_from(regresar):
     titulo_input = ft.TextField(
         label = "Título del libro: ",
@@ -27,18 +30,41 @@ def libro_from(regresar):
         autor = autor_input.value
         isbn = isbn_input.value
 
+        #Validación de campos vacíos
         if titulo == "" or autor == "" or isbn == "":
             mensaje.value = "Todos los campos son obligatorios"
             mensaje.color = ft.Colors.RED
-        else:
-            mensaje.value = f"Libro '{titulo}' listo para insertar"
-            print(f"Título: '{titulo}', Autor: '{autor}', ISBN: '{isbn}'")
+            e.page.update()
+            return
+        
+        try:
+            libro_dao = LibroDAO()
+            id = libro_dao.obtener_ultimo_id() + 1
+
+            nuevo_libro = Libro(
+                id=id,
+                titulo=titulo,
+                autor=int(autor),
+                isbn=isbn,
+                disponible=True
+            )
+
+            libro_dao.insertar(nuevo_libro)
+
+            mensaje.value = f"Libro '{titulo}' ha sido insertado" 
             mensaje.color = ft.Colors.GREEN
             titulo_input.value = ""
             autor_input.value = ""
             isbn_input.value = ""
 
-        e.page.update()
+        except ValueError:
+            mensaje.value = "El campo 'Autor' debe ser un número entero"
+            mensaje.color = ft.Colors.RED
+        except Exception as error:
+            mensaje.value = f"Error al insertar el libro: {error}"
+            mensaje.color = ft.Colors.RED
+
+            e.page.update()
 
     return ft.Container(
         padding = 30,
